@@ -5,3 +5,7 @@
 If calculated using algebra, we would take the sum of the values in the array with no number were missing subtracting the sum of the values present in the array when there is the missing number
 
 Sum = [n(n+1)]/2
+
+##### How can you find the duplicate number in a given array of integers?
+
+Set() is used to keep track of elements that have existed. Set helps check the existence of an element faster than using arrays and includes().
