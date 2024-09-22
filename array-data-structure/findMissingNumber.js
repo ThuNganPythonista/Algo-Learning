@@ -23,3 +23,7 @@ console.log(`Số còn thiếu là: ${missingNumber}`);
 //     }
 //     return accumulator;
 // };
+// var nums = [1, 2, 3, 4];
+// var fn = (accumulator, currentValue) => accumulator + currentValue;
+// var result = reduce(nums, fn, 0);
+// console.log(result); // Output: 10

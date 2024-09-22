@@ -4,4 +4,4 @@
 
 If calculated using algebra, we would take the sum of the values in the array with no number were missing subtracting the sum of the values present in the array when there is the missing number
 
-Sum = [n(n-1)]/2
+Sum = [n(n+1)]/2
