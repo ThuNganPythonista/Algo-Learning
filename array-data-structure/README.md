@@ -9,3 +9,7 @@ Sum = [n(n+1)]/2
 ##### How can you find the duplicate number in a given array of integers?
 
 Set() is used to keep track of elements that have existed. Set helps check the existence of an element faster than using arrays and includes().
+
+##### How can you find the largest and smallest number in an unsorted array?
+
+Take the first element and compare it with the remaining elements.
