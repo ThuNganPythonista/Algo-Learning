@@ -18,3 +18,7 @@ Take the first element and compare it with the remaining elements.
 
 arr[i]+arr[j];
 j=i+1;
+
+##### What is the way to find all duplicate numbers in an array if it contains multiple repeating numbers?
+
+One Set() to store elements in a Set(), one Set() to represent the seen status, and one Array.from to convert the Set into an Array
