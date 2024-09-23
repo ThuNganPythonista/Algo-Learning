@@ -22,3 +22,7 @@ j=i+1;
 ##### What is the way to find all duplicate numbers in an array if it contains multiple repeating numbers?
 
 One Set() to store elements in a Set(), one Set() to represent the seen status, and one Array.from to convert the Set into an Array
+
+##### How to remove duplicate elements from a given array?
+
+A Set is a data structure in JavaScript that only allows unique values. When you convert an array to a Set, it automatically removes duplicate elements.
