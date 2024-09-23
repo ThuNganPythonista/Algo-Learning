@@ -13,3 +13,8 @@ Set() is used to keep track of elements that have existed. Set helps check the e
 ##### How can you find the largest and smallest number in an unsorted array?
 
 Take the first element and compare it with the remaining elements.
+
+##### How to find all pairs of numbers in an integer array whose sum equals a given number?
+
+arr[i]+arr[j];
+j=i+1;
