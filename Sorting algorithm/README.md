@@ -37,3 +37,5 @@ Tóm lại, đệ quy được sử dụng trong Quicksort để:
 +Kết hợp lại thành mảng đã sắp xếp hoàn chỉnh.
 
 Quá trình này giúp Quicksort đạt được hiệu suất cao, với độ phức tạp trung bình là O(n log n).
+
+_Đọc thêmt_: https://glints.com/vn/blog/cau-hoi-phong-van-thuat-toan/#5_giai_thich_cac_ky_hieu_khac_nhau_duoc_su_dung_khi_noi_den_do_phuc_tap_ve_thoi_gian
