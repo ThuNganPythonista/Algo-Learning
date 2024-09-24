@@ -31,3 +31,5 @@ Nhược điểm : Muốn gọi đến thằng thứ n thì phải loop n lần 
 - Node cuối cùng trỏ đến null.
 
 **Chèn node vào giữa hàng**
+
+![illustration](../images/a1.png)
