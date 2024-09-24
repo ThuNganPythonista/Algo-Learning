@@ -10,6 +10,8 @@ còn O(n) giống như một đường thẳng tăng tiến
 
 => khi dữ liệu ít thì nó chạy nhanh (trục Oy), khi dữ liệu nhiều thì nó sẽ chạy chậm
 
+![illustration](../images/a2.png)
+
 Ví dụ:
 
 một array [1,2,3,4,5]. Việc xóa số 3 từ array thì độ phức tạp O(1)
