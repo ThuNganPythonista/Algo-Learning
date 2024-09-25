@@ -38,7 +38,7 @@ Nhược điểm : Muốn gọi đến thằng thứ n thì phải loop n lần 
 
 Định nghĩa một nút (node)
 
-```
+```javascript
 class Node {
   constructor(data) {
     this.data = data;
@@ -53,13 +53,15 @@ class Node {
 
 **this.next = null;**: this.next là thuộc tính dùng để lưu trữ tham chiếu đến nút tiếp theo trong danh sách. Ban đầu, nó được gán giá trị null vì khi tạo một nút mới, nó chưa liên kết với bất kỳ nút nào khác. Sau này, bạn có thể thay đổi giá trị của this.next để liên kết nó với một nút khác trong danh sách.
 
-```
+VÍ DỤ :
+
+```javascript
 // Định nghĩa lớp Node
 class Node {
-    constructor(data) {
-        this.data = data;  // Lưu trữ dữ liệu của nút
-        this.next = null;  // Con trỏ đến nút tiếp theo (ban đầu là null)
-    }
+  constructor(data) {
+    this.data = data; // Lưu trữ dữ liệu của nút
+    this.next = null; // Con trỏ đến nút tiếp theo (ban đầu là null)
+  }
 }
 
 // Tạo một số nút mới
@@ -71,13 +73,47 @@ node1.next = node2;
 
 console.log(node1); // In ra: Node { data: 10, next: Node { data: 20, next: null } }
 console.log(node2); // In ra: Node { data: 20, next: null }
+```
+
+**constructor():** Phương thức khởi tạo của lớp LinkedList được gọi khi bạn tạo một đối tượng mới của lớp này. Nó thiết lập thuộc tính head là null, điều này có nghĩa là danh sách bắt đầu với trạng thái rỗng (chưa có nút nào).
+
+```javascript
+class linkedList {
+  constructor() {
+    this.head = null;
+  }
+}
+```
+
+**Phân tích addToList(data)**
+
+**Chức năng:** Phương thức append(data) được sử dụng để thêm một nút (node) mới với giá trị data vào cuối danh sách liên kết.
+
+`  addToList(data) {`
+
+**Kiểm tra danh sách có rỗng?**
+
+```javascript
+if (this.head === null) {
+  this.head = newNode;
+}
+```
+
+Nếu danh sách đang rỗng, thì nút mới newNode sẽ trở thành nút đầu tiên trong danh sách (this.head = newNode).
+
+**Nếu danh sách không rỗng**
+
+```javascript
+else {
+  let current = this.head;
+  while (current.next !== null) {
+    current = current.next;
+  }
+  current.next = newNode;
+}
 
 ```
 
-**này có phải là oop không?**
-
-- Đoạn mã của bạn có **tính đóng gói** vì các thuộc tính data và next được gói gọn trong lớp Node.
-
-- Đoạn mã có tính trừu tượng hóa vì nó ẩn đi chi tiết quản lý danh sách liên kết, cung cấp cho người dùng một giao diện đơn giản để làm việc với các nút mà không cần biết chi tiết nội bộ.
+Biến current bắt đầu từ this.head và di chuyển qua các nút liên tiếp bằng cách cập nhật current = current.next cho đến khi gặp nút cuối (khi current.next là null).
 
 ![illustration](../images/a1.png)

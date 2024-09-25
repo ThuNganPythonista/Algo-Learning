@@ -13,7 +13,7 @@ class LinkedList {
   }
 
   // Thêm một nút vào cuối danh sách
-  append(data) {
+  addToList(data) {
     const newNode = new Node(data);
     if (this.head === null) {
       this.head = newNode;
@@ -42,11 +42,11 @@ class LinkedList {
 
 // Tạo danh sách liên kết đơn
 const list = new LinkedList();
-list.append(10);
-list.append(20);
-list.append(30);
-list.append(40);
-list.append(50);
+list.addToList(10);
+list.addToList(20);
+list.addToList(30);
+list.addToList(40);
+list.addToList(50);
 
 // Tìm phần tử ở giữa
 console.log("Phần tử ở giữa là:", list.findMiddle()); // Kết quả: 30
