@@ -322,7 +322,3 @@ Làm thế nào để chia danh sách liên kết đơn thành hai nửa?
 **Câu hỏi liên quan đến thuật toán**
 
 Giải thích cách thực hiện thuật toán Quick Sort trên danh sách liên kết đơn.
-
-Làm thế nào để tìm phần tử lớn nhất và nhỏ nhất trong danh sách liên kết đơn?
-
-Làm thế nào để loại bỏ tất cả các phần tử xuất hiện nhiều hơn một lần trong danh sách liên kết đơn?
