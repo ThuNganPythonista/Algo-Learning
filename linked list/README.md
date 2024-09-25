@@ -14,11 +14,13 @@ còn O(n) giống như một đường thẳng tăng tiến
 
 Ví dụ:
 
-một array [1,2,3,4,5]. Việc xóa số 3 từ array thì độ phức tạp O(1)
+một array [1,2,3,4,5] sẽ được khai báo length ngay từ đầu là 5 ô trong bộ nhớ. Việc xóa số 3 từ array thì độ phức tạp O(1)
 
 Tuy nhiên nếu mộ array từ 1 -> một số siêu lớn thì độ phức tạp sẽ tăng O(n), bởi vì khi lấy ra 1 số thì số kế bên phải dịch chuyển vào khoảng trống của số mới dời đi. array [1,2,3,4,5] thì chỉ dịch chuyển 4 và 5 nên không mất nhiều time so với dịch chuyển so với mảng nhiều số lớn hơn -> O(n).
 
-Do đó, người ta tạo ra linked list để giải quyết vấn đề O(n) mà chỉ tốn O(1) thôi.
+Do đó, người ta tạo ra linked list để giải quyết vấn đề O(n) mà chỉ tốn O(1) thôi. Đó là không cần phải khai báo bộ nhớ cố định ngay từ đầu nên kích thước linh hoạt
+
+=> Tuy vậy, kích thước linh hoạt thì nó sẽ gây ra nhược điểm là yêu cầu bộ nhớ nhiều hơn do cần lưu trữ các con trỏ(chi phí cao hơn so với khai báo mảng thông thường).
 
 **Linked list?**
 
@@ -32,6 +34,50 @@ Nhược điểm : Muốn gọi đến thằng thứ n thì phải loop n lần 
 - Mỗi node gồm (data và con trỏ next để liên kết với nút tiếp theo)
 - Node cuối cùng trỏ đến null.
 
-**Chèn node vào giữa hàng**
+**Code**
+
+Định nghĩa một nút (node)
+
+```
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+```
+
+**constructor(data)**: Đây là hàm khởi tạo của lớp Node. Hàm này sẽ được gọi mỗi khi bạn tạo một đối tượng mới từ lớp Node.
+
+**this.data = data;**: this.data là thuộc tính của đối tượng Node, được sử dụng để lưu trữ giá trị mà nút sẽ giữ. data là tham số mà bạn truyền vào khi tạo một đối tượng Node mới. Ví dụ, nếu bạn tạo một nút mới với new Node(5), thì data sẽ là 5 và this.data sẽ lưu trữ giá trị 5.
+
+**this.next = null;**: this.next là thuộc tính dùng để lưu trữ tham chiếu đến nút tiếp theo trong danh sách. Ban đầu, nó được gán giá trị null vì khi tạo một nút mới, nó chưa liên kết với bất kỳ nút nào khác. Sau này, bạn có thể thay đổi giá trị của this.next để liên kết nó với một nút khác trong danh sách.
+
+```
+// Định nghĩa lớp Node
+class Node {
+    constructor(data) {
+        this.data = data;  // Lưu trữ dữ liệu của nút
+        this.next = null;  // Con trỏ đến nút tiếp theo (ban đầu là null)
+    }
+}
+
+// Tạo một số nút mới
+const node1 = new Node(10);
+const node2 = new Node(20);
+
+// Kết nối node1 đến node2
+node1.next = node2;
+
+console.log(node1); // In ra: Node { data: 10, next: Node { data: 20, next: null } }
+console.log(node2); // In ra: Node { data: 20, next: null }
+
+```
+
+**này có phải là oop không?**
+
+- Đoạn mã của bạn có **tính đóng gói** vì các thuộc tính data và next được gói gọn trong lớp Node.
+
+- Đoạn mã có tính trừu tượng hóa vì nó ẩn đi chi tiết quản lý danh sách liên kết, cung cấp cho người dùng một giao diện đơn giản để làm việc với các nút mà không cần biết chi tiết nội bộ.
 
 ![illustration](../images/a1.png)
