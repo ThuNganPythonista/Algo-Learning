@@ -116,4 +116,213 @@ else {
 
 Biến current bắt đầu từ this.head và di chuyển qua các nút liên tiếp bằng cách cập nhật current = current.next cho đến khi gặp nút cuối (khi current.next là null).
 
+Kết quả duyệt :
+
+```javascript
+LinkedList {
+  head: Node {
+    data: 1,
+    next: Node {
+      data: 2,
+      next: Node {
+        data: 3,
+        next: null
+      }
+    }
+  }
+}
+
+```
+
 ![illustration](../images/a1.png)
+
+# Những Câu Hỏi Về Singly Linked List
+
+**Câu hỏi cơ bản**
+
+Danh sách liên kết đơn có hỗ trợ tính đóng gói dữ liệu như thế nào?
+
+_Danh sách liên kết đơn (singly linked list) có thể hỗ trợ tính đóng gói (encapsulation) trong lập trình hướng đối tượng (OOP) bằng cách sử dụng các lớp (class) và ẩn các chi tiết cài đặt bên trong các lớp này. Tính đóng gói giúp bảo vệ dữ liệu bên trong đối tượng, chỉ cho phép truy cập thông qua các phương thức (method) cụ thể._
+
+Khi nào nên sử dụng danh sách liên kết đơn thay vì mảng?
+
+_Danh sách liên kết đơn phù hợp khi cần chèn và xóa phần tử thường xuyên, khi không biết trước kích thước dữ liệu hoặc khi cần tiết kiệm bộ nhớ và sử dụng linh hoạt. Tuy nhiên, nếu bạn cần truy cập ngẫu nhiên hoặc thực hiện nhiều thao tác tính toán phức tạp, mảng sẽ là lựa chọn tốt hơn. Việc lựa chọn cấu trúc dữ liệu phù hợp cần dựa trên nhu cầu cụ thể của bài toán và đặc điểm của từng cấu trúc dữ liệu._
+
+Làm thế nào để thêm một phần tử vào cuối/đầu danh sách liên kết đơn?
+
+```javascript
+ // Thêm một nút vào đầu danh sách
+    prepend(data) { // Hàm thêm vào đầu danh sách
+        const newNode = new Node(data);
+        newNode.next = this.head; // Trỏ nút mới tới nút head hiện tại
+        this.head = newNode; // Cập nhật head để trỏ tới nút mới
+    }
+
+    printList() { // Hàm in ra danh sách liên kết
+        let current = this.head;
+        while (current) {
+            console.log(current.data);
+            current = current.next;
+        }
+    }
+```
+
+```javascript
+      printList() { // Hàm in ra danh sách liên kết
+        let current = this.head;
+        while (current) {
+            console.log(current.data);
+            current = current.next;
+        }
+    }
+```
+
+Làm thế nào để chèn một phần tử vào một vị trí cụ thể trong danh sách liên kết đơn?
+
+```javascript
+  // Hàm chèn một phần tử vào một vị trí cụ thể
+    insertAt(index, data) {
+        const newNode = new Node(data); // Tạo nút mới với dữ liệu cần chèn
+
+        // Nếu chèn vào đầu danh sách
+        if (index === 0) {
+            newNode.next = this.head; // Trỏ nút mới tới nút head hiện tại
+            this.head = newNode; // Cập nhật head để trỏ tới nút mới
+            return;
+        }
+
+        let current = this.head;
+        let previous = null;
+        let currentIndex = 0;
+
+        // Duyệt qua danh sách đến vị trí `index - 1`
+        while (current !== null && currentIndex < index) {
+            previous = current;
+            current = current.next;
+            currentIndex++;
+        }
+
+        // Nếu vị trí vượt quá độ dài của danh sách
+        if (currentIndex !== index) {
+            console.log("Vị trí không hợp lệ.");
+            return;
+        }
+
+        // Chèn nút mới vào vị trí cụ thể
+        newNode.next = current; // Trỏ nút mới tới nút hiện tại (nếu có)
+        previous.next = newNode; // Trỏ nút trước đó tới nút mới
+    }
+
+    // Hàm in ra danh sách liên kết
+    printList() {
+        let current = this.head;
+        while (current) {
+            console.log(current.data);
+            current = current.next;
+        }
+    }
+
+```
+
+Làm thế nào để xóa phần tử đầu tiên trong danh sách liên kết đơn?
+
+```javascript
+ // Hàm xóa phần tử đầu
+    removeFirst() {
+        if (this.head === null) {
+            console.log("Danh sách rỗng. Không có gì để xóa.");
+            return;
+        }
+        this.head = this.head.next; // Cập nhật head để trỏ tới nút kế tiếp
+    }
+
+    // Hàm in ra danh sách liên kết
+    printList() {
+        let current = this.head;
+        while (current) {
+            console.log(current.data);
+            current = current.next;
+        }
+    }
+```
+
+Làm thế nào để xóa phần tử cuối cùng trong danh sách liên kết đơn?
+
+```javascript
+
+   // Hàm xóa phần tử cuối
+    removeLast() {
+        if (this.head === null) {
+            console.log("Danh sách rỗng. Không có gì để xóa.");
+            return;
+        }
+        if (this.head.next === null) { // Nếu chỉ có một nút
+            this.head = null; // Cập nhật head về null
+            return;
+        }
+
+        let current = this.head;
+        while (current.next.next !== null) { // Duyệt đến nút trước cuối cùng
+            current = current.next;
+        }
+        current.next = null; // Cập nhật con trỏ next của nút trước cuối cùng
+    }
+
+```
+
+Làm thế nào để xóa một phần tử tại một vị trí cụ thể trong danh sách liên kết đơn?
+
+```javascript
+ // Hàm xóa phần tử tại vị trí cụ thể
+    removeAt(index) {
+        if (this.head === null) {
+            console.log("Danh sách rỗng. Không có gì để xóa.");
+            return;
+        }
+
+        // Nếu xóa phần tử đầu
+        if (index === 0) {
+            this.head = this.head.next; // Cập nhật head để trỏ tới nút kế tiếp
+            return;
+        }
+
+        let current = this.head;
+        let previous = null;
+        let currentIndex = 0;
+
+        // Duyệt qua danh sách để tìm nút tại vị trí `index`
+        while (current !== null && currentIndex < index) {
+            previous = current; // Lưu nút trước đó
+            current = current.next; // Di chuyển tới nút tiếp theo
+            currentIndex++;
+        }
+
+        // Kiểm tra xem vị trí có hợp lệ không
+        if (current === null) {
+            console.log("Vị trí không hợp lệ.");
+            return;
+        }
+
+        // Cập nhật con trỏ next của nút trước đó để bỏ qua nút hiện tại
+        previous.next = current.next;
+    }
+
+```
+
+**Câu hỏi nâng cao**
+
+Làm thế nào để tìm số lượng phần tử trong một danh sách liên kết đơn?
+
+Làm thế nào để đảo ngược một danh sách liên kết đơn?
+
+Làm thế nào để xóa các phần tử trùng lặp trong danh sách liên kết đơn?
+
+Làm thế nào để chia danh sách liên kết đơn thành hai nửa?
+
+**Câu hỏi liên quan đến thuật toán**
+
+Giải thích cách thực hiện thuật toán Quick Sort trên danh sách liên kết đơn.
+
+Làm thế nào để tìm phần tử lớn nhất và nhỏ nhất trong danh sách liên kết đơn?
+
+Làm thế nào để loại bỏ tất cả các phần tử xuất hiện nhiều hơn một lần trong danh sách liên kết đơn?
