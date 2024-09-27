@@ -344,3 +344,17 @@ Làm thế nào để xóa một phần tử tại một vị trí cụ thể tr
     }
 
 ```
+
+**Câu hỏi nâng cao**
+
+Làm thế nào để tìm số lượng phần tử trong một danh sách liên kết đơn?
+
+Làm thế nào để đảo ngược một danh sách liên kết đơn?
+
+Làm thế nào để xóa các phần tử trùng lặp trong danh sách liên kết đơn?
+
+Làm thế nào để chia danh sách liên kết đơn thành hai nửa?
+
+**Câu hỏi liên quan đến thuật toán**
+
+Giải thích cách thực hiện thuật toán Quick Sort trên danh sách liên kết đơn.
