@@ -140,39 +140,75 @@ LinkedList {
 
 **Câu hỏi cơ bản**
 
-Danh sách liên kết đơn có hỗ trợ tính đóng gói dữ liệu như thế nào?
+**Khi nào không nên sử dụng danh sách liên kết đơn thay vì mảng?**
 
-_Danh sách liên kết đơn (singly linked list) có thể hỗ trợ tính đóng gói (encapsulation) trong lập trình hướng đối tượng (OOP) bằng cách sử dụng các lớp (class) và ẩn các chi tiết cài đặt bên trong các lớp này. Tính đóng gói giúp bảo vệ dữ liệu bên trong đối tượng, chỉ cho phép truy cập thông qua các phương thức (method) cụ thể._
+_1)Khi cần truy cập ngẫu nhiên nhiều lần:_
 
-Khi nào nên sử dụng danh sách liên kết đơn thay vì mảng?
+Nếu bạn cần truy cập trực tiếp tới các phần tử bất kỳ trong danh sách nhiều lần, mảng sẽ hiệu quả hơn do truy cập trực tiếp với thời gian O(1).
 
-_Danh sách liên kết đơn phù hợp khi cần chèn và xóa phần tử thường xuyên, khi không biết trước kích thước dữ liệu hoặc khi cần tiết kiệm bộ nhớ và sử dụng linh hoạt. Tuy nhiên, nếu bạn cần truy cập ngẫu nhiên hoặc thực hiện nhiều thao tác tính toán phức tạp, mảng sẽ là lựa chọn tốt hơn. Việc lựa chọn cấu trúc dữ liệu phù hợp cần dựa trên nhu cầu cụ thể của bài toán và đặc điểm của từng cấu trúc dữ liệu._
+_2)Khi bộ nhớ là vấn đề quan trọng:_
 
-Làm thế nào để thêm một phần tử vào cuối/đầu danh sách liên kết đơn?
+Mỗi nút trong danh sách liên kết đơn cần thêm bộ nhớ cho con trỏ next. Nếu số lượng phần tử rất lớn, tổng lượng bộ nhớ sử dụng cho các con trỏ này có thể đáng kể.
+
+_3)Khi cần sử dụng nhiều thao tác sắp xếp:_
+
+Mảng thường được ưu tiên cho các thao tác sắp xếp vì có thể sử dụng các thuật toán sắp xếp như QuickSort hoặc MergeSort hiệu quả hơn so với danh sách liên kết đơn.
+
+**Làm thế nào để thêm một phần tử vào cuối/đầu danh sách liên kết đơn?**
 
 ```javascript
- // Thêm một nút vào đầu danh sách
-    prepend(data) { // Hàm thêm vào đầu danh sách
-        const newNode = new Node(data);
-        newNode.next = this.head; // Trỏ nút mới tới nút head hiện tại
-        this.head = newNode; // Cập nhật head để trỏ tới nút mới
-    }
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
 
-    printList() { // Hàm in ra danh sách liên kết
-        let current = this.head;
-        while (current) {
-            console.log(current.data);
-            current = current.next;
-        }
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  // Thêm một nút vào đầu danh sách
+  prepend(data) {
+    // Hàm thêm vào đầu danh sách
+    const newNode = new Node(data);
+    newNode.next = this.head; // Trỏ nút mới tới nút head hiện tại
+    this.head = newNode; // Cập nhật head để trỏ tới nút mới
+  }
+
+  printList() {
+    // Hàm in ra danh sách liên kết
+    let current = this.head;
+    while (current) {
+      console.log(current.data);
+      current = current.next;
     }
+  }
+}
+
+// Sử dụng
+const list = new LinkedList();
+list.prepend(3);
+list.prepend(2);
+list.prepend(1); // Thêm 1 vào đầu danh sách
+list.printList(); // Kết quả: 1 2 3
 ```
 
+**Thêm phần tử vào cuối danh sách**
+
 ```javascript
-      printList() { // Hàm in ra danh sách liên kết
-        let current = this.head;
-        while (current) {
-            console.log(current.data);
-            current = current.next;
+ // Thêm một nút vào cuối danh sách
+    append(data) {
+        const newNode = new Node(data);
+        if (this.head === null) { // Nếu danh sách rỗng
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while (current.next !== null) { // Duyệt đến nút cuối cùng
+                current = current.next;
+            }
+            current.next = newNode; // Gán nút cuối cùng trỏ tới nút mới
         }
     }
 ```
@@ -308,17 +344,3 @@ Làm thế nào để xóa một phần tử tại một vị trí cụ thể tr
     }
 
 ```
-
-**Câu hỏi nâng cao**
-
-Làm thế nào để tìm số lượng phần tử trong một danh sách liên kết đơn?
-
-Làm thế nào để đảo ngược một danh sách liên kết đơn?
-
-Làm thế nào để xóa các phần tử trùng lặp trong danh sách liên kết đơn?
-
-Làm thế nào để chia danh sách liên kết đơn thành hai nửa?
-
-**Câu hỏi liên quan đến thuật toán**
-
-Giải thích cách thực hiện thuật toán Quick Sort trên danh sách liên kết đơn.

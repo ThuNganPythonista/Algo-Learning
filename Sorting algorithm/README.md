@@ -18,7 +18,7 @@
 
 **Right:** [34, 7, 23, 32] (các phần tử lớn hơn 5).
 
-**3.ọi đệ quy cho right của mảng [34, 7, 23, 32]:** Chọn pivot tiếp theo là 32:
+**3.Gọi đệ quy cho right của mảng [34, 7, 23, 32]:** Chọn pivot tiếp theo là 32:
 
 **Left:** [7, 23] (phần tử nhỏ hơn 32).
 
@@ -35,7 +35,3 @@ Tóm lại, đệ quy được sử dụng trong Quicksort để:
 - Sắp xếp từng mảng con.
 
 +Kết hợp lại thành mảng đã sắp xếp hoàn chỉnh.
-
-Quá trình này giúp Quicksort đạt được hiệu suất cao, với độ phức tạp trung bình là O(n log n).
-
-_Đọc thêmt_: https://glints.com/vn/blog/cau-hoi-phong-van-thuat-toan/#5_giai_thich_cac_ky_hieu_khac_nhau_duoc_su_dung_khi_noi_den_do_phuc_tap_ve_thoi_gian
